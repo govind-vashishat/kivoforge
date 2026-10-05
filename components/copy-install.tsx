@@ -27,9 +27,9 @@ export function CopyInstall() {
   }
 
   return (
-    <div className="flex h-11 items-center rounded-[8px] border border-border bg-base pl-4 font-mono text-sm">
-      <code className="flex-1 whitespace-nowrap text-platinum">
-        <span className="text-steel select-none">$ </span>
+    <div className="flex h-11 items-center rounded-[8px] border border-border bg-panel pl-4 sm:w-fit font-mono text-sm">
+      <code className="flex-1 whitespace-nowrap text-strong">
+        <span className="text-mute select-none">$ </span>
         {site.install}
       </code>
       <Separator orientation="vertical" className="ml-4 h-5 self-center" />
@@ -41,7 +41,7 @@ export function CopyInstall() {
               size="icon-lg"
               onClick={copy}
               aria-label="Copy install command"
-              className="mx-1 text-steel hover:bg-surface hover:text-white"
+              className="mx-1 text-mute hover:bg-hover hover:text-foreground"
             />
           }
         >

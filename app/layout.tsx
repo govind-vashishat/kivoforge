@@ -14,20 +14,20 @@ const geistMono = Geist_Mono({
 });
 
 const description =
-  "Kivo is an open-source coding agent for your terminal. Describe a task in plain English, and it reads your code, edits files, and runs commands until the task is done.";
+  "Kivo is an open-source coding agent that runs in your terminal. Describe a task, and it reads your code, edits files, and runs your tests until it is done.";
 
 export const metadata: Metadata = {
-  title: "Kivo: an open-source coding agent for your terminal",
+  title: "Kivo: the open-source coding agent for your terminal",
   description,
   openGraph: {
-    title: "Kivo: an open-source coding agent for your terminal",
+    title: "Kivo: the open-source coding agent for your terminal",
     description,
     type: "website",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#08090a",
   colorScheme: "dark",
 };
 
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">
+      <body className="h-full">
         <TooltipProvider delay={200}>{children}</TooltipProvider>
       </body>
     </html>

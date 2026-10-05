@@ -1,8 +1,9 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { Container } from "@/components/layout";
 import { Logo } from "@/components/logo";
-import { Container } from "@/components/section";
+import { buttonVariants } from "@/components/ui/button";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -12,10 +13,13 @@ function subscribe(onChange: () => void) {
 }
 
 const links = [
-  { label: "Docs", href: site.docs },
+  { label: "Features", href: "#features" },
   { label: "Evals", href: "#evals" },
   { label: "Roadmap", href: "#roadmap" },
+  { label: "Docs", href: site.docs },
 ];
+
+const linkClass = "text-sm text-mute transition-colors hover:text-foreground";
 
 export function SiteNav() {
   const scrolled = useSyncExternalStore(
@@ -29,35 +33,34 @@ export function SiteNav() {
       className={cn(
         "sticky top-0 z-40 border-b transition-colors duration-200",
         scrolled
-          ? "border-border bg-black/70 backdrop-blur-md"
-          : "border-transparent bg-black",
+          ? "border-border bg-background/75 backdrop-blur-md"
+          : "border-transparent",
       )}
     >
-      <Container className="flex h-14 items-center justify-between gap-3">
-        <a href="#top" className="flex items-center gap-2" aria-label="kivo, home">
+      <Container className="flex h-14 items-center justify-between gap-4">
+        <a href="#top" className="flex items-center gap-2" aria-label="Kivo, home">
           <Logo size={22} strokeWidth={6} />
-          <span className="text-[17px] font-medium tracking-tight text-white">
-            kivo
-          </span>
+          <span className="text-[15px] font-medium text-foreground">Kivo</span>
         </a>
-        <nav aria-label="Primary" className="flex items-center gap-4 sm:gap-7">
-          <ul className="flex items-center gap-4 text-[13px] sm:gap-7 sm:text-sm">
+        <nav aria-label="Primary" className="flex items-center gap-4 sm:gap-6">
+          <ul className="hidden items-center gap-6 md:flex">
             {links.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
-                  className="text-silver transition-colors hover:text-white"
-                >
+                <a href={link.href} className={linkClass}>
                   {link.label}
                 </a>
               </li>
             ))}
           </ul>
+          <span className="hidden h-4 w-px bg-border md:block" aria-hidden="true" />
+          <a href={site.repo} className={linkClass}>
+            GitHub
+          </a>
           <a
-            href={site.repo}
-            className="rounded-full border border-border bg-surface px-3 py-1.5 text-[13px] text-platinum transition-colors hover:text-white sm:px-3.5 sm:text-sm"
+            href="#install"
+            className={cn(buttonVariants({ size: "default" }), "rounded-full px-3.5")}
           >
-            GitHub <span aria-hidden="true">↗</span>
+            Install
           </a>
         </nav>
       </Container>
