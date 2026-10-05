@@ -1,26 +1,147 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
+  --font-heading: var(--font-geist-sans);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Kivo palette, by role */
+  --color-black: #000000;
+  --color-base: #0a0a0b;
+  --color-surface: #111214;
+  --color-slate: #3a3f47;
+  --color-steel: #6e747d;
+  --color-silver: #a8aeb8;
+  --color-platinum: #d9dce1;
+  --color-white: #f5f6f7;
+  --color-lime: var(--lime);
+  --color-lime-soft: var(--lime-soft);
+  --color-lime-deep: var(--lime-deep);
+
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Dark only. */
+:root {
+  color-scheme: dark;
+  --background: #000000;
+  --foreground: #f5f6f7;
+  --card: #0a0a0b;
+  --card-foreground: #f5f6f7;
+  --popover: #111214;
+  --popover-foreground: #f5f6f7;
+  --primary: #f5f6f7;
+  --primary-foreground: #000000;
+  --secondary: #111214;
+  --secondary-foreground: #d9dce1;
+  --muted: #111214;
+  --muted-foreground: #6e747d;
+  /* shadcn's "accent" is a hover colour, not the lime. */
+  --accent: #111214;
+  --accent-foreground: #f5f6f7;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: #1f2125;
+  --input: #1f2125;
+  --ring: #a8aeb8;
+  --radius: 0.75rem;
+
+  /* Lime is only for the logo core, the badge dot, and eval pass marks. */
+  --lime: #c6f432;
+  --lime-soft: #e4ff8f;
+  --lime-deep: #7e9c14;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-background text-silver;
+  }
+  ::selection {
+    background: #3a3f47;
+    color: #f5f6f7;
+  }
+  a,
+  button {
+    @apply rounded-[4px] outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring;
+  }
+}
+
+@layer components {
+  /* The only text gradient on the page. */
+  .hero-gradient {
+    background-image: linear-gradient(to bottom, #f5f6f7, #8a9099);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Faint neutral glow behind the hero logo. */
+  .logo-glow {
+    background-image: radial-gradient(
+      circle at center,
+      rgb(168 174 184 / 0.05),
+      transparent 68%
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
