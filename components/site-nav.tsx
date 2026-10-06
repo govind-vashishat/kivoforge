@@ -15,7 +15,6 @@ function subscribe(onChange: () => void) {
 const links = [
   { label: "Features", href: "#features" },
   { label: "Evals", href: "#evals" },
-  { label: "Roadmap", href: "#roadmap" },
   { label: "Docs", href: site.docs },
 ];
 

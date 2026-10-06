@@ -15,13 +15,13 @@ export function Container({ className, ...props }: React.ComponentProps<"div">) 
 export function InstallActions({ className }: { className?: string }) {
   return (
     <div className={className}>
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
         <CopyInstall />
         <a href={site.repo} className={buttonVariants({ size: "lg" })}>
           View on GitHub
         </a>
       </div>
-      <p className="mt-4 text-sm text-mute">Requires Bun and an OpenAI API key.</p>
+      <p className="mt-4 text-center text-sm text-mute">Requires Bun and an OpenAI API key.</p>
     </div>
   );
 }
@@ -31,13 +31,11 @@ export function FeatureSection({
   id,
   title,
   description,
-  learnMore = true,
   children,
 }: {
   id: string;
   title: string;
   description: string;
-  learnMore?: boolean;
   children: React.ReactNode;
 }) {
   return (
@@ -52,14 +50,12 @@ export function FeatureSection({
           </h2>
           <div className="lg:pt-2">
             <p className="max-w-[48ch] text-[17px] leading-relaxed">{description}</p>
-            {learnMore ? (
-              <a
-                href={site.docs}
-                className="mt-5 inline-block text-[15px] text-strong transition-colors hover:text-foreground"
-              >
-                Learn more <span aria-hidden="true">→</span>
-              </a>
-            ) : null}
+            <a
+              href={site.docs}
+              className="mt-5 inline-block text-[15px] text-strong transition-colors hover:text-foreground"
+            >
+              Learn more <span aria-hidden="true">→</span>
+            </a>
           </div>
         </div>
         <div className="mt-10 sm:mt-14">{children}</div>

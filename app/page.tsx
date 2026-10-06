@@ -6,7 +6,6 @@ import { EditorVisual } from "@/components/visuals/editor-visual";
 import { EvalsVisual } from "@/components/visuals/evals-visual";
 import { HeroSession } from "@/components/visuals/hero-session";
 import { ProjectVisual } from "@/components/visuals/project-visual";
-import { RoadmapVisual } from "@/components/visuals/roadmap-visual";
 import { TestsVisual } from "@/components/visuals/tests-visual";
 import { site } from "@/lib/site";
 
@@ -24,27 +23,27 @@ export default function Home() {
       <main id="top">
         <section aria-labelledby="hero-title" className="pt-14 pb-14 sm:pt-24 sm:pb-20">
           <Container>
+            <p className="text-center">
+              <a
+                href={site.repo}
+                className="group text-[15px] text-mute transition-colors hover:text-foreground"
+              >
+                <span className="mr-3 text-strong group-hover:text-foreground">New</span>
+                v0.2 in development <span aria-hidden="true">→</span>
+              </a>
+            </p>
             <h1
               id="hero-title"
-              className="text-[2.375rem] leading-[1.06] font-medium tracking-[-0.03em] text-foreground sm:text-5xl lg:text-[3.5rem] xl:text-[4rem]"
+              className="mt-6 text-center text-[2.375rem] leading-[1.06] font-medium tracking-[-0.03em] text-foreground sm:text-5xl lg:text-[3.5rem] xl:text-[4rem]"
             >
               The open-source coding agent{" "}
               <br className="hidden lg:block" />
               for your terminal
             </h1>
-            <div className="mt-6 flex flex-col gap-4 lg:flex-row lg:items-baseline lg:justify-between lg:gap-10">
-              <p className="text-[17px] leading-relaxed">
-                Describe a task, and Kivo reads your code, edits files, and runs
-                your tests until it&apos;s done.
-              </p>
-              <a
-                href={site.repo}
-                className="group shrink-0 text-[15px] text-mute transition-colors hover:text-foreground"
-              >
-                <span className="mr-3 text-strong group-hover:text-foreground">New</span>
-                v0.2 in development <span aria-hidden="true">→</span>
-              </a>
-            </div>
+            <p className="mx-auto mt-6 max-w-[40ch] text-center text-[17px] leading-relaxed text-balance lg:max-w-none">
+              Describe a task, and Kivo reads your code, edits files, and runs
+              your tests until it&apos;s done.
+            </p>
             <InstallActions className="mt-9" />
             <div className="mt-14 sm:mt-16">
               <HeroSession />
@@ -92,20 +91,11 @@ export default function Home() {
           <EditorVisual />
         </FeatureSection>
 
-        <FeatureSection
-          id="roadmap"
-          title="Roadmap"
-          description="What's being built next."
-          learnMore={false}
-        >
-          <RoadmapVisual />
-        </FeatureSection>
-
         <section id="install" aria-labelledby="install-title" className="py-14 sm:py-24">
           <Container>
             <h2
               id="install-title"
-              className="text-[2rem] leading-[1.1] font-medium tracking-[-0.03em] text-foreground sm:text-5xl"
+              className="text-center text-[2rem] leading-[1.1] font-medium tracking-[-0.03em] text-foreground sm:text-5xl"
             >
               Try Kivo in your next project
             </h2>
@@ -129,11 +119,6 @@ export default function Home() {
             <li>
               <a href={site.npm} className={footerLink}>
                 npm
-              </a>
-            </li>
-            <li>
-              <a href="#roadmap" className={footerLink}>
-                Roadmap
               </a>
             </li>
           </ul>
